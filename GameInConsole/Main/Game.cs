@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameInConsole.Main.Components;
+using GameInConsole.Main.Scene;
 using GameInConsole.Main.Scenes;
 
 namespace GameInConsole.Main {
@@ -36,6 +36,9 @@ namespace GameInConsole.Main {
         public void LoadScene(IScene scene) {
             currentScene = scene;
             scene.Run(this);
+        }
+        public IScene LoadedScene() {
+            return currentScene;
         }
     }
 }

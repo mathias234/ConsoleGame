@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using GameInConsole.Main.Components;
+using GameInConsole.Main.Scene;
 
 namespace GameInConsole.Main.Scenes {
     class WelcomeScreen : IScene {
