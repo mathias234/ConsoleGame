@@ -11,9 +11,13 @@ namespace GameInConsole.Main {
         public Player player;
         IScene currentScene;
 
+        public static Game instance;
+
+
         public void Start() {
             InitializePlayer();
-            LoadScene(new WelcomeScreen());
+            instance = this;
+            //LoadScene(new WelcomeScreen());
 
             // Now we are finished with the starting stuff
 

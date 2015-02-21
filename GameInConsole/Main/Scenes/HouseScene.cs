@@ -12,8 +12,16 @@ namespace GameInConsole.Main.Scenes {
                 Player p = game.player;
                 if (p.LookDir == LookDirection.Forward) {
                     Console.WriteLine("You can see a big white door");
-                    string choise = Console.ReadLine();
+                } else if (p.LookDir == LookDirection.Backward) {
+                    Console.WriteLine("You see nothing interesting");
+                } else if (p.LookDir == LookDirection.Right) {
+                    Console.WriteLine("You see nothing interesting");
+                } else if (p.LookDir == LookDirection.Left) {
+                    Console.WriteLine("You see nothing interesting");
                 }
+
+                string choise = Console.ReadLine();
+                ConsoleHelper.ReadChoise(choise);
 
             }
         }
