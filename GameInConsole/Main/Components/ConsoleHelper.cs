@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameInConsole.Main.Scene;
+using GameInConsole.Main.Scenes;
+using GameInConsole.Main.Components;
 
-namespace GameInConsole.Main.Scene {
+namespace GameInConsole.Main.Scenes {
     public class ConsoleHelper {
-        public static bool ReadChoise(string choise) {
-            // The basic choises like movement, looking and accepting.
+        public static bool ReadChoise(string choise, List<GameObject> gameObjects) {
             if (choise.ToLower() == "y" || choise.ToLower() == "yes" || choise.ToLower() == "ye") {
                 return true;
             } else if (choise.ToLower() == "n" || choise.ToLower() == "no" || choise.ToLower() == "nope" || choise.ToLower() == "nah") {
@@ -21,10 +21,18 @@ namespace GameInConsole.Main.Scene {
                 Turn(LookDirection.Left);
             } else if (choise.ToLower() == "right") {
                 Turn(LookDirection.Right);
-            } else if (choise.ToLower().Contains("enter") || choise.ToLower().Contains("open")) {
-                return true;
+            } else if (choise.ToLower().Contains("use")) {
+                foreach (GameObject go in gameObjects) {
+                    if (choise.ToLower().Contains(go.Name.ToLower())) {
+                        go.Type.Action();
+                    }
+                }
+            } else if (choise.ToLower() == "clear") {
+                Console.Clear();
+            } else {
+                Console.WriteLine("I did not understand that");
             }
-            Console.WriteLine("I didnt understand that.");
+            
             return false;
         }
         public static void Turn(LookDirection dir) {

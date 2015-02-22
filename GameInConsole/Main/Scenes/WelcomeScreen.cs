@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using GameInConsole.Main.Scene;
+using GameInConsole.Main.Scenes;
 
 namespace GameInConsole.Main.Scenes {
     class WelcomeScreen : IScene {
@@ -29,7 +29,7 @@ namespace GameInConsole.Main.Scenes {
             Console.WriteLine("\nYou will start with " + game.player.MaxHealth + " Health, get ready for you biggest adventure yet" + ". Are you ready?");
             string choise = Console.ReadLine();
 
-            if (ConsoleHelper.ReadChoise(choise)) {
+            if (ConsoleHelper.ReadChoise(choise, null)) {
                 Console.Clear();
                 Console.WriteLine("Good Luck!");
                 Thread.Sleep(1000);

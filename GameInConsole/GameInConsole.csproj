@@ -56,11 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main\Components\GameObject.cs" />
+    <Compile Include="Main\Components\Objects\Door.cs" />
+    <Compile Include="Main\Components\IGameObject.cs" />
     <Compile Include="Main\Components\Player.cs" />
     <Compile Include="Main\Components\ConsoleHelper.cs" />
     <Compile Include="Main\Game.cs" />
     <Compile Include="Main\Scenes\HouseScene.cs" />
-    <Compile Include="Main\Scenes\Outdoor.cs" />
+    <Compile Include="Main\Scenes\Outside.cs" />
     <Compile Include="Main\Scenes\WelcomeScreen.cs" />
     <Compile Include="Main\Program.cs" />
     <Compile Include="Main\Scenes\IScene.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameInConsole.Main.Scene {
+namespace GameInConsole.Main.Scenes {
     public class Player {
         string name;
         int health;
