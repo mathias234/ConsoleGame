@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using GameInConsole.Main.Components;
 using GameInConsole.Main.Scenes;
 
 namespace GameInConsole.Main.Scenes {
     class WelcomeScreen : IScene {
+        public List<GameObject> GameObjects {
+            get {
+                throw new NotImplementedException();
+            }
+
+            set {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Run(Game game) {
             Welcome(game);
         }
@@ -15,21 +26,18 @@ namespace GameInConsole.Main.Scenes {
             Thread.Sleep(900);
 
             Console.WriteLine("This is a short game made purly in C#\n");
-            Thread.Sleep(1200);
+            Thread.Sleep(1500);
             Console.Clear();
 
             Console.WriteLine("Please Tell me your name so we can begin\n");
             string name = Console.ReadLine();
             game.player.Name = name;
 
-            Console.Clear();
-            Console.WriteLine(game.player.Name + " That is a fine name\n");
-            Thread.Sleep(900);
 
             Console.WriteLine("\nYou will start with " + game.player.MaxHealth + " Health, get ready for you biggest adventure yet" + ". Are you ready?");
             string choise = Console.ReadLine();
 
-            if (ConsoleHelper.ReadChoise(choise, null)) {
+            if (ConsoleHelper.ReadChoise(choise)) {
                 Console.Clear();
                 Console.WriteLine("Good Luck!");
                 Thread.Sleep(1000);

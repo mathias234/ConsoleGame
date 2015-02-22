@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameInConsole.Main.Scenes;
+using GameInConsole.Main.Components;
 
 namespace GameInConsole.Main {
     public class Game {
@@ -30,6 +31,7 @@ namespace GameInConsole.Main {
             player = new Player();
             player.MaxHealth = 100;
             player.LookDir = LookDirection.Forward;
+            player.Inventory.Add(new Item("Ultimate Weapon", ItemType.Weapon));
         }
 
         public void LoadScene(IScene scene) {
