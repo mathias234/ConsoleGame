@@ -11,5 +11,6 @@ namespace GameInConsole.Main.Scenes {
         void Run();
         List<GameObject> GameObjects { get; set; }
         bool HasShownLocDescript { get; set; }
+
     }
 }

@@ -28,7 +28,7 @@ namespace GameInConsole.Main.Scenes {
                 Game.instance.LoadedScene().HasShownLocDescript = false;
             } else if (choise.ToLower().Contains("look")) {
                 Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("use")) {  // use Objects doors etc
+            } else if (choise.ToLower().Contains("use")) {  // use Objects doors (and roads will be changed.)
                 for (int x = 0; x < gameObjects.Count; x++) {
                     if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && !gameObjects[x].Type.ToString().Contains("Item")) {
                         gameObjects[x].Type.Action();
