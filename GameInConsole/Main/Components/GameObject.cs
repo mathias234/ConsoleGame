@@ -15,7 +15,7 @@ namespace GameInConsole.Main.Components {
 
         public GameObject() {
             this.name = "NoName";
-            this.lookDir = LookDirection.Forward;
+            this.lookDir = LookDirection.North;
             this.type = null;
             this.interactable = false;
             this.text = "a";

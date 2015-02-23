@@ -30,13 +30,20 @@ namespace GameInConsole.Main.Scenes {
         public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
         public List<Item> Inventory { get { return inventory; } }
         public LookDirection LookDir { get { return lookDir; } set { lookDir = value; } }
+        /// <summary>
+        /// Returns the players stats in a nicely formated string
+        /// </summary>
+        /// <returns></returns>
+        public string PlayerInfo() {
+            return "My name is " + name + ", I have " + health + " health out of " + MaxHealth + ". I am currently look towards " + lookDir.ToString();
+        }
 
     }
 
     public enum LookDirection {
-        Forward,
-        Backward,
-        Left,
-        Right,
+        North,
+        South,
+        West,
+        East,
     };
 }

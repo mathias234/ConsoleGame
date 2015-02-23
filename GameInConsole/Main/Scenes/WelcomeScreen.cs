@@ -8,7 +8,9 @@ using GameInConsole.Main.Scenes;
 
 namespace GameInConsole.Main.Scenes {
     class WelcomeScreen : IScene {
-        public List<GameObject> GameObjects {
+        public List<GameObject> gameObjects = new List<GameObject>();
+
+        public bool HasShownLocDescript {
             get {
                 throw new NotImplementedException();
             }
@@ -18,11 +20,18 @@ namespace GameInConsole.Main.Scenes {
             }
         }
 
-        public void Run(Game game) {
-            Welcome(game);
+        List<GameObject> IScene.GameObjects {
+            get { return gameObjects; }
+            set { gameObjects = value; }
         }
-        public void Welcome(Game game) {
-            Console.WriteLine("Hello And welcome to Origins of Stramon\n");
+
+        public void Run() {
+            Welcome();
+
+
+        }
+        public void Welcome() {
+            Console.WriteLine("Hello And welcome to a game\n");
             Thread.Sleep(900);
 
             Console.WriteLine("This is a short game made purly in C#\n");
@@ -31,10 +40,10 @@ namespace GameInConsole.Main.Scenes {
 
             Console.WriteLine("Please Tell me your name so we can begin\n");
             string name = Console.ReadLine();
-            game.player.Name = name;
+            Game.playerInstance.Name = name;
 
 
-            Console.WriteLine("\nYou will start with " + game.player.MaxHealth + " Health, get ready for you biggest adventure yet" + ". Are you ready?");
+            Console.WriteLine("\nYou will start with " + Game.playerInstance.MaxHealth + " Health, get ready for you biggest adventure yet" + ". Are you ready?");
             string choise = Console.ReadLine();
 
             if (ConsoleHelper.ReadChoise(choise)) {
@@ -42,13 +51,13 @@ namespace GameInConsole.Main.Scenes {
                 Console.WriteLine("Good Luck!");
                 Thread.Sleep(1000);
                 Console.Clear();
-                Tutorial(game);
+                Tutorial();
             } else {
                 System.Environment.Exit(0);
             }
 
         }
-        void Tutorial(Game game) {
+        void Tutorial() {
             Console.WriteLine("This is the tutorial and we will skips this for now nobody really cares anyway");
             Thread.Sleep(2000);
             Console.Clear();

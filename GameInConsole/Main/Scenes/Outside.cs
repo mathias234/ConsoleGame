@@ -18,7 +18,17 @@ namespace GameInConsole.Main.Scenes {
             }
         }
 
-        public void Run(Game game) {
+        public bool HasShownLocDescript {
+            get {
+                throw new NotImplementedException();
+            }
+
+            set {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void Run() {
             Console.WriteLine("We are outside!");
         }
     }

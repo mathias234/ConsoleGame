@@ -14,21 +14,23 @@ namespace GameInConsole.Main.Scenes {
                 return true;
             } else if (choise.ToLower() == "n" || choise.ToLower() == "no" || choise.ToLower() == "nope" || choise.ToLower() == "nah") {
                 return false;
-            } else if (choise.ToLower().Contains("forward")) {
-                Turn(LookDirection.Forward);
-            } else if (choise.ToLower().Contains("backward")) {
-                Turn(LookDirection.Backward);
-            } else if (choise.ToLower().Contains("left")) {
-                Turn(LookDirection.Left);
-            } else if (choise.ToLower().Contains("right")) {
-                Turn(LookDirection.Right);
+            } else if (choise.ToLower().Contains("go north")) {
+                Turn(LookDirection.North);
+            } else if (choise.ToLower().Contains("go south")) {
+                Turn(LookDirection.South);
+            } else if (choise.ToLower().Contains("go west")) {
+                Turn(LookDirection.West);
+            } else if (choise.ToLower().Contains("go east")) {
+                Turn(LookDirection.East);
+            } else if (choise.ToLower().Contains("look")) {
+                Game.instance.LoadedScene().HasShownLocDescript = false;
             } else if (choise.ToLower().Contains("use")) {  // use Objects doors etc
                 for (int x = 0; x < gameObjects.Count; x++) {
                     if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && !gameObjects[x].Type.ToString().Contains("Item")) {
                         gameObjects[x].Type.Action();
-                    } 
+                    }
                 }
-            } else if (choise.ToLower().Contains("pickup")) {   // pickup items
+            } else if (choise.ToLower().Contains("pickup") || choise.ToLower().Contains("take")) {   // pickup/take items
                 for (int x = 0; x < gameObjects.Count; x++) {
                     if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && gameObjects[x].Type.ToString().Contains("Item")) {
                         gameObjects[x].Type.Action();
@@ -37,11 +39,13 @@ namespace GameInConsole.Main.Scenes {
             } else if (choise.ToLower().Contains("clear")) {
                 Console.Clear();
             } else if (choise.ToLower().Contains("inventory") || choise.ToLower().Contains("bag") || choise.ToLower().Contains("pouch")) {
-                foreach (Item it in Game.instance.player.Inventory) {
+                foreach (Item it in Game.playerInstance.Inventory) {
                     Console.WriteLine("Name: " + it.Name);
                     Console.WriteLine("Type: " + it.Type.ToString());
                     Console.WriteLine("_________________________________");
                 }
+            } else if (choise.ToLower().Contains("stats")) {
+                Console.WriteLine(Game.playerInstance.PlayerInfo());
             } else if (choise.ToLower().Contains("debug")) {
                 for (int x = 0; x < gameObjects.Count; x++) {
                     Console.WriteLine("[DEBUG]:" + gameObjects[x].Name);
@@ -53,7 +57,7 @@ namespace GameInConsole.Main.Scenes {
             return false;
         }
         public static void Turn(LookDirection dir) {
-            Game.instance.player.LookDir = dir;
+            Game.playerInstance.LookDir = dir;
         }
     }
 }

@@ -8,7 +8,8 @@ using GameInConsole.Main.Components;
 
 namespace GameInConsole.Main.Scenes {
     public interface IScene {
-        void Run(Game game);
+        void Run();
         List<GameObject> GameObjects { get; set; }
+        bool HasShownLocDescript { get; set; }
     }
 }

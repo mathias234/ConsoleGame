@@ -8,36 +8,36 @@ using GameInConsole.Main.Components;
 
 namespace GameInConsole.Main {
     public class Game {
-        public Player player;
+        Player player;
         IScene currentScene;
 
         public static Game instance;
+        public static Player playerInstance;
 
+        public string gameTitle = "a game";
 
         public void Start() {
+            Console.Title = gameTitle;
             InitializePlayer();
+            playerInstance = player;
             instance = this;
-            //LoadScene(new WelcomeScreen());
-
-            // Now we are finished with the starting stuff
-
-            // This is the initial scene
+            LoadScene(new WelcomeScreen());
             LoadScene(new HouseScene());
-             
 
+            // so the console wont exit
             Console.ReadLine();
         }
         void InitializePlayer() {
             player = new Player();
             player.MaxHealth = 100;
-            player.LookDir = LookDirection.Forward;
-            player.Inventory.Add(new Item("Ultimate Weapon", ItemType.Weapon));
+            player.Health = player.MaxHealth;
+            player.LookDir = LookDirection.North;
         }
 
         public void LoadScene(IScene scene) {
             Console.Clear();
             currentScene = scene;
-            scene.Run(this);
+            scene.Run();
         }
         public IScene LoadedScene() {
             return currentScene;
