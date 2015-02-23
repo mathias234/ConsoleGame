@@ -21,7 +21,7 @@ namespace GameInConsole.Main {
             InitializePlayer();
             playerInstance = player;
             instance = this;
-            LoadScene(new WelcomeScreen());
+           // LoadScene(new WelcomeScreen());
             LoadScene(new HouseScene());
 
             // so the console wont exit

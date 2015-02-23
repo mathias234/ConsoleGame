@@ -14,14 +14,18 @@ namespace GameInConsole.Main.Scenes {
                 return true;
             } else if (choise.ToLower() == "n" || choise.ToLower() == "no" || choise.ToLower() == "nope" || choise.ToLower() == "nah") {
                 return false;
-            } else if (choise.ToLower().Contains("go north")) {
+            } else if (choise.ToLower().Contains("look north")) {
                 Turn(LookDirection.North);
-            } else if (choise.ToLower().Contains("go south")) {
+                Game.instance.LoadedScene().HasShownLocDescript = false;
+            } else if (choise.ToLower().Contains("look south")) {
                 Turn(LookDirection.South);
-            } else if (choise.ToLower().Contains("go west")) {
+                Game.instance.LoadedScene().HasShownLocDescript = false;
+            } else if (choise.ToLower().Contains("look west")) {
                 Turn(LookDirection.West);
-            } else if (choise.ToLower().Contains("go east")) {
+                Game.instance.LoadedScene().HasShownLocDescript = false;
+            } else if (choise.ToLower().Contains("look east")) {
                 Turn(LookDirection.East);
+                Game.instance.LoadedScene().HasShownLocDescript = false;
             } else if (choise.ToLower().Contains("look")) {
                 Game.instance.LoadedScene().HasShownLocDescript = false;
             } else if (choise.ToLower().Contains("use")) {  // use Objects doors etc

@@ -36,17 +36,11 @@ namespace GameInConsole.Main.Scenes {
 
                 while (hasShownLocDescript == false) {
                     Player p = Game.playerInstance;
-
-                    int count = 0;
-                    foreach (GameObject obj in gameObjects) {
-                        if (p.LookDir == obj.LookDir) {
-                            text = text + "You see " + obj.Text + " " + obj.Name + "\n";
-                            continue;
-                        }
-                        if (count == gameObjects.Count - 1) {
-                            text = text + "You see nothing";
-                        }
-                        count++;
+                    if (p.LookDir == LookDirection.North) {
+                        text = "You can see a white door infornt of you see a knife on the table and a Sword hangning on the wall";
+                    }
+                    if (p.LookDir == LookDirection.West) {
+                        text = "You can see a trap door, which seems to be nailed shut.";
                     }
                     hasShownLocDescript = true;
                 }
