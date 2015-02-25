@@ -9,6 +9,12 @@ using GameInConsole.Main.Scenes;
 namespace GameInConsole.Main.Scenes {
     class WelcomeScreen : IScene {
         public List<GameObject> gameObjects = new List<GameObject>();
+        List<NeighbourScene> neighboors;
+
+        List<NeighbourScene> IScene.Neighbours {
+            get { return neighboors; }
+            set { neighboors = value; }
+        }
 
         public bool HasShownLocDescript {
             get {

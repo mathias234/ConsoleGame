@@ -12,6 +12,12 @@ namespace GameInConsole.Main.Scenes {
 
         public List<GameObject> gameObjects = new List<GameObject>();
         bool hasShownLocDescript = false;
+        List<NeighbourScene> neighboors = new List<NeighbourScene>();
+
+        List<NeighbourScene> IScene.Neighbours {
+            get { return neighboors; }
+            set { neighboors = value; }
+        }
 
         List<GameObject> IScene.GameObjects {
             get { return gameObjects; }
@@ -25,25 +31,16 @@ namespace GameInConsole.Main.Scenes {
 
         public void Run() {
             // If the game object is a object item then they should have the same name. this might be changed in the future
-            gameObjects.Add(new GameObject("Door", LookDirection.North, new Door(new Outside()), true));
-            gameObjects.Add(new GameObject("Knife", LookDirection.North, new ObjectItem("Knife", ItemType.Weapon, gameObjects.Count), true));
-            gameObjects.Add(new GameObject("Sword", LookDirection.North, new ObjectItem("Sword", ItemType.Weapon, gameObjects.Count), true));
-            gameObjects.Add(new GameObject("Trap Door", LookDirection.West, new Door(new Outside()), false));
+            gameObjects.Add(new GameObject("Door", new Door(new Outside()), true));
+            gameObjects.Add(new GameObject("Knife", new ObjectItem("Knife", ItemType.Weapon, gameObjects.Count), true));
+            gameObjects.Add(new GameObject("Sword", new ObjectItem("Sword", ItemType.Weapon, gameObjects.Count), true));
+            gameObjects.Add(new GameObject("Trap Door", new Door(new Outside()), false));
 
             while (Game.instance.LoadedScene() == this) {
-                string text = "You are now standing in a house. ";
+                string text = "";
 
                 while (hasShownLocDescript == false) {
-                    Player p = Game.playerInstance;
-                    if (p.LookDir == LookDirection.North) {
-                        text = text + "You can see a white door infornt of you see a knife on the table and a Sword hangning on the wall";
-                    } else if (p.LookDir == LookDirection.South) {
-                        text = text + "You can see a trap door, which seems to be nailed shut.";
-                    } else if (p.LookDir == LookDirection.West) {
-
-                    } else if (p.LookDir == LookDirection.East) {
-
-                    }
+                    text = "You are now standing in a house. To the north you can see a white door infornt of you see a knife on the table and a Sword hangning on the wall.To the south you can see a trap door, which seems to be nailed shut.";
                     hasShownLocDescript = true;
                 }
                 Console.WriteLine(text);

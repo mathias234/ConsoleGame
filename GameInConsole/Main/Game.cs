@@ -31,7 +31,6 @@ namespace GameInConsole.Main {
             player = new Player();
             player.MaxHealth = 100;
             player.Health = player.MaxHealth;
-            player.LookDir = LookDirection.North;
         }
 
         public void LoadScene(IScene scene) {

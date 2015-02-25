@@ -12,6 +12,12 @@ namespace GameInConsole.Main.Scenes {
     class EmptyScene : IScene {
         public List<GameObject> gameObjects = new List<GameObject>();
         bool hasShownLocDescript = false;
+        List<NeighbourScene> neighboors = new List<NeighbourScene>();
+
+        List<NeighbourScene> IScene.Neighbours {
+            get { return neighboors; }
+            set { neighboors = value; }
+        }
 
         List<GameObject> IScene.GameObjects {
             get { return gameObjects; }
@@ -30,15 +36,7 @@ namespace GameInConsole.Main.Scenes {
 
                 while (hasShownLocDescript == false) {
                     Player p = Game.playerInstance;
-                    if (p.LookDir == LookDirection.North) {
 
-                    } else if (p.LookDir == LookDirection.South) {
-
-                    } else if (p.LookDir == LookDirection.West) {
-
-                    } else if (p.LookDir == LookDirection.East) {
-
-                    }
 
                     hasShownLocDescript = true;
                 }

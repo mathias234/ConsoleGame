@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using GameInConsole.Main.Components;
 using GameInConsole.Main.Scenes;
-using GameInConsole.Main.Components.Objects;
 
 namespace GameInConsole.Main.Scenes {
-    class Outside : IScene {
+    class TownScene : IScene {
         public List<GameObject> gameObjects = new List<GameObject>();
         bool hasShownLocDescript = false;
         List<NeighbourScene> neighboors = new List<NeighbourScene>();
@@ -30,24 +29,17 @@ namespace GameInConsole.Main.Scenes {
 
 
         public void Run() {
-            gameObjects.Add(new GameObject("road", new Door(new Outside()), true));
-            gameObjects.Add(new GameObject("door", new Door(new HouseScene()), true));
-
-            neighboors.Add(new NeighbourScene(new TownScene(), NeighbourRot.North));
-            
-
             while (Game.instance.LoadedScene() == this) {
                 string text = "";
 
                 while (hasShownLocDescript == false) {
                     Player p = Game.playerInstance;
 
-                    text = "You are now standing outside of the house. to the north there is a spiraly road leading down to a town";
-
+                    text = "You are now standing in the town";
+                    
                     hasShownLocDescript = true;
                 }
                 Console.WriteLine(text);
-
                 ConsoleHelper.ReadChoise(Console.ReadLine());
             }
         }

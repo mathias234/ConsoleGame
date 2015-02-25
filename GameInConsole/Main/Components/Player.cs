@@ -13,8 +13,6 @@ namespace GameInConsole.Main.Scenes {
 
         List<Item> inventory = new List<Item>();
 
-        LookDirection lookDir;
-
         public bool AddItemToInventory(Item item) {
             if (inventory.Count < 10) {
                 inventory.Add(item);
@@ -29,21 +27,13 @@ namespace GameInConsole.Main.Scenes {
         public int Health { get { return health; } set { health = value; } }
         public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
         public List<Item> Inventory { get { return inventory; } }
-        public LookDirection LookDir { get { return lookDir; } set { lookDir = value; } }
         /// <summary>
         /// Returns the players stats in a nicely formated string
         /// </summary>
         /// <returns></returns>
         public string PlayerInfo() {
-            return "My name is " + name + ", I have " + health + " health out of " + MaxHealth + ". I am currently look towards " + lookDir.ToString();
+            return "My name is " + name + ", I have " + health + " health out of " + MaxHealth;
         }
 
     }
-
-    public enum LookDirection {
-        North,
-        South,
-        West,
-        East,
-    };
 }

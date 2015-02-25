@@ -14,21 +14,49 @@ namespace GameInConsole.Main.Scenes {
                 return true;
             } else if (choise.ToLower() == "n" || choise.ToLower() == "no" || choise.ToLower() == "nope" || choise.ToLower() == "nah") {
                 return false;
-            } else if (choise.ToLower().Contains("look north")) {
-                Turn(LookDirection.North);
-                Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("look south")) {
-                Turn(LookDirection.South);
-                Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("look west")) {
-                Turn(LookDirection.West);
-                Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("look east")) {
-                Turn(LookDirection.East);
-                Game.instance.LoadedScene().HasShownLocDescript = false;
+            } else if (choise.ToLower().Contains("go north")) {
+                foreach (NeighbourScene temp in Game.instance.LoadedScene().Neighbours) {
+                    if (Game.instance.LoadedScene().Neighbours.Count > 0) {
+                        if (temp.NeighbourRotation == NeighbourRot.North) {
+                            Game.instance.LoadScene(temp.Scene);
+                            Game.instance.LoadedScene().HasShownLocDescript = false;
+                            continue;
+                        }
+                    }
+                }
+            } else if (choise.ToLower().Contains("go south")) {
+                foreach (NeighbourScene temp in Game.instance.LoadedScene().Neighbours) {
+                    if (Game.instance.LoadedScene().Neighbours.Count > 0) {
+                        if (temp.NeighbourRotation == NeighbourRot.South) {
+                            Game.instance.LoadScene(temp.Scene);
+                            Game.instance.LoadedScene().HasShownLocDescript = false;
+                            continue;
+                        }
+                    }
+                }
+            } else if (choise.ToLower().Contains("go west")) {
+                foreach (NeighbourScene temp in Game.instance.LoadedScene().Neighbours) {
+                    if (Game.instance.LoadedScene().Neighbours.Count > 0) {
+                        if (temp.NeighbourRotation == NeighbourRot.West) {
+                            Game.instance.LoadScene(temp.Scene);
+                            Game.instance.LoadedScene().HasShownLocDescript = false;
+                            continue;
+                        }
+                    }
+                }
+            } else if (choise.ToLower().Contains("go east")) { // does not work yet because it will be changed to go into scenes which does not require a pass like a door
+                foreach (NeighbourScene temp in Game.instance.LoadedScene().Neighbours) {
+                    if (Game.instance.LoadedScene().Neighbours.Count > 0) {
+                        if (temp.NeighbourRotation == NeighbourRot.East) {
+                            Game.instance.LoadScene(temp.Scene);
+                            Game.instance.LoadedScene().HasShownLocDescript = false;
+                            continue;
+                        }
+                    }
+                }
             } else if (choise.ToLower().Contains("look")) {
                 Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("use")) {  // use Objects doors (and roads will be changed.)
+            } else if (choise.ToLower().Contains("use")) {  // use Objects doors 
                 for (int x = 0; x < gameObjects.Count; x++) {
                     if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && !gameObjects[x].Type.ToString().Contains("Item")) {
                         gameObjects[x].Type.Action();
@@ -57,11 +85,8 @@ namespace GameInConsole.Main.Scenes {
             } else {
                 Console.WriteLine("I did not understand that");
             }
-            
+
             return false;
-        }
-        public static void Turn(LookDirection dir) {
-            Game.playerInstance.LookDir = dir;
         }
     }
 }

@@ -64,12 +64,14 @@
     <Compile Include="Main\Components\Player.cs" />
     <Compile Include="Main\Components\ConsoleHelper.cs" />
     <Compile Include="Main\Game.cs" />
-    <None Include="Main\Scenes\EmptyScene.cs" />
+    <Compile Include="Main\Scenes\EmptyScene.cs" />
     <Compile Include="Main\Scenes\HouseScene.cs" />
+    <Compile Include="Main\Scenes\SceneComponents\NeighbourScene.cs" />
     <Compile Include="Main\Scenes\Outside.cs" />
+    <Compile Include="Main\Scenes\TownScene.cs" />
     <Compile Include="Main\Scenes\WelcomeScreen.cs" />
     <Compile Include="Main\Program.cs" />
-    <Compile Include="Main\Scenes\IScene.cs" />
+    <Compile Include="Main\Scenes\SceneComponents\IScene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
