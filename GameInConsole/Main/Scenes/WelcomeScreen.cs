@@ -65,6 +65,7 @@ namespace GameInConsole.Main.Scenes {
         }
         void Tutorial() {
             Console.WriteLine("This is the tutorial and we will skips this for now nobody really cares anyway");
+            Game.instance.AddScore(20);
             Thread.Sleep(2000);
             Console.Clear();
         }

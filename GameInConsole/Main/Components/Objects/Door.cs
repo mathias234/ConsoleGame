@@ -7,12 +7,28 @@ using GameInConsole.Main.Scenes;
 
 namespace GameInConsole.Main.Components.Objects {
     public class Door : IGameObject {
+        bool open;
         IScene scene;
-        public Door(IScene scene) {
-            this.scene = scene;
+        public Door(bool open, IScene scene) {
+            this.Scene = scene;
+            this.Open = open;
         }
+
+        public bool Open {
+            get { return open; }
+            set { open = value; }
+        }
+
+        public IScene Scene {
+            get { return scene; }
+            set { scene = value; }
+        }
+
         public void Action() {
-            Game.instance.LoadScene(scene);
+            if (Open == true)
+                Game.instance.LoadScene(Scene);
+            else
+                Console.WriteLine("Door is closed");
         }
     }
 }

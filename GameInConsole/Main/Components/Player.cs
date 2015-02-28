@@ -27,6 +27,8 @@ namespace GameInConsole.Main.Scenes {
         public int Health { get { return health; } set { health = value; } }
         public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
         public List<Item> Inventory { get { return inventory; } }
+        
+
         /// <summary>
         /// Returns the players stats in a nicely formated string
         /// </summary>

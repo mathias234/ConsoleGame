@@ -13,7 +13,6 @@ namespace GameInConsole.Main.Scenes {
             this.neighbourRotation = neighbourRotation;
             this.scene = scene;
         }
-        
 
         public IScene Scene {
             get { return scene; }

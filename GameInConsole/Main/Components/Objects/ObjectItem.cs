@@ -11,11 +11,13 @@ namespace GameInConsole.Main.Components.Objects {
         string name;
         ItemType type;
         int objPos;
+        float score;
 
-        public ObjectItem(string name, ItemType type, int objPos) {
+        public ObjectItem(string name, ItemType type, int objPos, float score) {
             this.name = name;
             this.type = type;
             this.objPos = objPos;
+            this.score = score;
         }
         public void Action() {
             Game.playerInstance.AddItemToInventory(new Item(name, type));
@@ -23,6 +25,7 @@ namespace GameInConsole.Main.Components.Objects {
                 if (Game.instance.LoadedScene().GameObjects[x].Name == name) {
                     Game.instance.LoadedScene().GameObjects.Remove(Game.instance.LoadedScene().GameObjects[x]);
                     Console.WriteLine("You took: " + name);
+                    Game.instance.AddScore(this.score);
                 }
             }
         }

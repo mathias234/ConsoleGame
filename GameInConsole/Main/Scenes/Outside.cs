@@ -30,8 +30,7 @@ namespace GameInConsole.Main.Scenes {
 
 
         public void Run() {
-            gameObjects.Add(new GameObject("road", new Door(new Outside()), true));
-            gameObjects.Add(new GameObject("door", new Door(new HouseScene()), true));
+            gameObjects.Add(new GameObject("door", new Door(false, new HouseScene()), true));
 
             neighboors.Add(new NeighbourScene(new TownScene(), NeighbourRot.North));
             

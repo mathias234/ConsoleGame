@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using GameInConsole.Main.Scenes;
 using GameInConsole.Main.Components;
-
+using GameInConsole.Main.Components.Objects;
+/// <summary>
+/// I handle all console inputs here
+/// </summary>
 namespace GameInConsole.Main.Scenes {
     public class ConsoleHelper {
         public static bool ReadChoise(string choise) {
             List<GameObject> gameObjects = Game.instance.LoadedScene().GameObjects;
+
             if (choise.ToLower() == "y" || choise.ToLower() == "yes" || choise.ToLower() == "ye") {
                 return true;
             } else if (choise.ToLower() == "n" || choise.ToLower() == "no" || choise.ToLower() == "nope" || choise.ToLower() == "nah") {
@@ -56,12 +60,27 @@ namespace GameInConsole.Main.Scenes {
                 }
             } else if (choise.ToLower().Contains("look")) {
                 Game.instance.LoadedScene().HasShownLocDescript = false;
-            } else if (choise.ToLower().Contains("use")) {  // use Objects doors 
+            } else if (choise.ToLower().Contains("open")) {
                 for (int x = 0; x < gameObjects.Count; x++) {
-                    if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && !gameObjects[x].Type.ToString().Contains("Item")) {
+                    if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && gameObjects[x].Type.ToString().ToLower().Contains("door")) {
+                        Door door = (Door)gameObjects[x].Type;
+                        if (door.Open == false) {
+                            door.Open = true;
+                            Console.WriteLine("The door is now open");
+                        } else {
+                            Console.WriteLine("The door is already open");
+                        }
+                    }
+                }
+            } else if (choise.ToLower().Contains("enter")) {
+                for (int x = 0; x < gameObjects.Count; x++) {
+                    if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && gameObjects[x].Type.ToString().ToLower().Contains("door")) {
                         gameObjects[x].Type.Action();
                     }
                 }
+            } else if (choise.ToLower().Contains("use")) {
+                Console.WriteLine("Not implemented yet"); // this will be like use item on thing
+                                                          // ex: use sword on goblin
             } else if (choise.ToLower().Contains("pickup") || choise.ToLower().Contains("take")) {   // pickup/take items
                 for (int x = 0; x < gameObjects.Count; x++) {
                     if (choise.ToLower().Contains(gameObjects[x].Name.ToLower()) && gameObjects[x].Type.ToString().Contains("Item")) {
