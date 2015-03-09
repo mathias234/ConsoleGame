@@ -1,5 +1,5 @@
-# ConsoleGameEngine
-This is a console game engine which will allow you to make games like Zork.
+# Console Game Engine
+This is a console game engine which will allow you to make games like Zork I.
 
 # TODO:
 Enemies
